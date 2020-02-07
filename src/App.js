@@ -24,7 +24,7 @@ let authenticated;
 const token = localStorage.FBIdToken;
 if (token) {
     const decodedToken = jwtDecode(token);
-    if (decodedToken.exp * 1000 < Date.now()) {
+    if (decodedToken.exp * 1001 < Date.now()) {
         window.location.href = "/login";
         authenticated = false;
     } else {
