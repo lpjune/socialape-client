@@ -7,7 +7,6 @@ import Grid from "@material-ui/core/Grid";
 import AppIcon from "../images/icon.png";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import axios from "axios";
 import CircularProgress from '@material-ui/core/CircularProgress';
 // Redux stuff
 import { connect } from 'react-redux';
