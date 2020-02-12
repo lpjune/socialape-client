@@ -6,7 +6,6 @@ import {
     LIKE_SCREAM,
     UNLIKE_SCREAM
 } from "../types";
-import { findDOMNode } from "react-dom";
 
 const initialState = {
     authenticated: false,
