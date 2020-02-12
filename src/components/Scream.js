@@ -5,6 +5,7 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import PropTypes from 'prop-types';
 import MyButton from "../util/MyButton";
+import DeleteScream from "./DeleteScream";
 
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -23,6 +24,7 @@ const styles = {
     card: {
         display: "flex",
         marginBottom: 20,
+        position: 'relative'
     },
     image: {
         minWidth: 200,
@@ -59,7 +61,8 @@ class Scream extends Component {
                 commentCount
             },
             user: {
-                authenticated
+                authenticated, 
+                credentials: { handle }
             }
         } = this.props;
         const likeButton = !authenticated ? (
@@ -78,7 +81,10 @@ class Scream extends Component {
                     <FavoriteBorder color="primary" />
                 </MyButton>
             )
-        )
+        );
+        const deleteButton = authenticated && userHandle === handle ? (
+            <DeleteScream screamId={screamId}/>
+        ) : null
         return (
             <Card className={classes.card}>
                 <CardMedia image={userImage} title="Profile image" className={classes.image}/>
@@ -91,6 +97,7 @@ class Scream extends Component {
                     >
                         {userHandle}
                     </Typography>
+                    {deleteButton}
                     <Typography variant="body2" color="textSecondary">
                         {dayjs(createdAt).fromNow()}
                     </Typography>
